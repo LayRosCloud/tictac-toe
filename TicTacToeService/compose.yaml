@@ -1,0 +1,9 @@
+services:
+    postgres:
+        image: postgres:16.2
+        environment:
+            - 'POSTGRES_DB=tictactoe_base'
+            - 'POSTGRES_PASSWORD=551617'
+            - 'POSTGRES_USER=admin'
+        ports:
+            - '5432:5432'
