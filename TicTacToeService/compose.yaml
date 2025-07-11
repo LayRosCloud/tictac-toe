@@ -7,3 +7,26 @@ services:
             - 'POSTGRES_USER=admin'
         ports:
             - '5432:5432'
+        networks:
+            - app-network
+    app:
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        ports:
+            - '8080:8080'
+        networks:
+            - app-network
+        restart: always
+        healthcheck:
+            test: ["CMD-SHELL", "curl --fail http://localhost:8080 || exit 1"]
+            interval: 30s
+            timeout: 10s
+            retries: 3
+            start_period: 60s
+        depends_on:
+            postgres:
+                condition: service_started
+networks:
+  app-network:
+    driver: bridge

@@ -18,7 +18,7 @@ namespace TicTacToeService.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GameResponseDto>>> FindAllGames(int limit = 5, int page = 0)
+        public async Task<ActionResult<IEnumerable<GameResponseDto>>> FindAllGames(int limit = 5, int page = 1)
         {
             var result = await _service.FindAllAsync(new PageableParams(limit, page));
             if (HttpContext != null)
