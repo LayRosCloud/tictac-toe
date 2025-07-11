@@ -37,7 +37,7 @@ namespace TicTacToeService.Services
 
         public async Task<ParticipantEntity?> FindByGameIdAndUserIdAsync(Guid gameId, long userId)
         {
-            return await _participantRepository.FindByGameIdAndUserId(gameId, userId);
+            return await _participantRepository.FindByGameIdAndUserIdAsync(gameId, userId);
         }
 
         private char GenerateCharacterForPlayer(int count)

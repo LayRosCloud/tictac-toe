@@ -34,7 +34,7 @@ namespace TicTacToeService.Repositories
             }).ToHashSetAsync();
         }
 
-        public async Task<ParticipantEntity?> FindByGameIdAndUserId(Guid gameId, long userId)
+        public async Task<ParticipantEntity?> FindByGameIdAndUserIdAsync(Guid gameId, long userId)
         {
             return await _database.Participants.SingleOrDefaultAsync(x => x.GameId == gameId && x.UserId == userId);
         }

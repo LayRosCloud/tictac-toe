@@ -2,6 +2,6 @@
 {
     public record PageableParams(int Limit, int Page)
     {
-        public int Offset => Limit * Page;
+        public int Offset => Limit * Page - Limit;
     }
 }

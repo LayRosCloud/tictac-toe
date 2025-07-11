@@ -15,6 +15,7 @@ namespace TicTacToeService.Mappers
             }
             return list;
         }
+
         public GameResponseDto MapToResponseDto(GameEntity game)
         {
             var response = new GameResponseDto

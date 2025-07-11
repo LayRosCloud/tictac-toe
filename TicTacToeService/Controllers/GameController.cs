@@ -18,11 +18,20 @@ namespace TicTacToeService.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GameResponseDto>>> FindAllGames(int limit, int page)
+        public async Task<ActionResult<IEnumerable<GameResponseDto>>> FindAllGames(int limit = 5, int page = 0)
         {
             var result = await _service.FindAllAsync(new PageableParams(limit, page));
-            HttpContext.Response.Headers.Append("x-total-count", result.Value.ToString());
+            if (HttpContext != null)
+            {
+                HttpContext.Response.Headers.Append("x-total-count", result.Value.ToString());
+            }
             return Ok(result.Key);
+        }
+
+        [HttpGet("/health")]
+        public ActionResult GetHealthStatus()
+        {
+            return Ok();
         }
 
         [HttpPost("invite")]

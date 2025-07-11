@@ -3,8 +3,8 @@
     public enum GameStatus
     {
         Win = 0,
-        Lose,
-        Draw,
-        Playing
+        Lose = 1,
+        Draw = 2,
+        Playing = 3
     }
 }
